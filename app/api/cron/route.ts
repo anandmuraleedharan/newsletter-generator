@@ -267,8 +267,6 @@ export async function POST(request: NextRequest) {
   try {
     // 1. Authorization Guard
     const authHeader = request.headers.get('authorization');
-    const expected = `Bearer ${process.env.CRON_SECRET}`;
-    console.log(`[AUTH DEBUG] authHeader exists: ${!!authHeader}, expected exists: ${!!process.env.CRON_SECRET}, authHeader length: ${authHeader?.length || 0}, expected length: ${expected.length}, match: ${authHeader === expected}`);
     if (!authHeader || authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
