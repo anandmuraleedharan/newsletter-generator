@@ -3,3 +3,8 @@ recipients:
     email: "anand.muraleedharan@gmail.com"
     role: "AI Engineer & Tech Enthusiast"
     active: true
+  - name: "Neethu Narayanan"
+    email: "neethunarayanan08@gmail.com"
+    role: "Tech Enthusiast & Daily Reader"
+    active: true
+

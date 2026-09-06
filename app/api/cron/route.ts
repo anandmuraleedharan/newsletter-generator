@@ -322,7 +322,9 @@ export async function POST(request: NextRequest) {
         responseText = getMockNewsletter(recipient.name, recipient.role);
       } else {
         // Construct LLM execution
-        const systemInstruction = `You are an elite AI research assistant. Conduct a live web search for the most significant AI news, model launches, product releases, and research breakthroughs that occurred in the last 24 hours. Synthesize your findings into a daily "morning read" digest consisting of 3 to 5 main stories. For each story, provide a concise explanation of what occurred, why it matters, and any key implications for technology professionals like ${recipient.name}, who is an ${recipient.role}. Maintain a highly professional, sharp, yet readable tone. Use crisp markdown formatting with clean headings, bold text, and bullet points. Include live web citations and links at the bottom. Sign off with: 'Best,\nYour Daily AI Assistant'. Do not use bracketed placeholders.`;
+        const firstName = recipient.name.split(' ')[0] || recipient.name;
+        const systemInstruction = `You are an elite AI research assistant. Conduct a live web search for the most significant AI news, model launches, product releases, and research breakthroughs that occurred in the last 24 hours. Synthesize your findings into a daily "morning read" digest consisting of 3 to 5 main stories. Begin the email body with a warm, personalized greeting addressing ${recipient.name} (e.g., 'Good morning, ${firstName}!'). For each story, provide a concise explanation of what occurred, why it matters, and any key implications for technology professionals like ${recipient.name}, who is an ${recipient.role}. Maintain a highly professional, sharp, yet readable tone. Use crisp markdown formatting with clean headings, bold text, and bullet points. Include live web citations and links at the bottom. Sign off with: 'Best,\nYour Daily AI Assistant'. Do not use bracketed placeholders.`;
+
 
         const dateStr = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
         responseText = await generateContentWithFallback(
