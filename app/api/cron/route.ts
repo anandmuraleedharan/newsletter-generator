@@ -392,7 +392,7 @@ export async function POST(request: NextRequest) {
       `;
 
       // Trigger Resend email delivery
-      const fromEmail = process.env.RESEND_FROM_EMAIL || 'Anand <onboarding@resend.dev>';
+      const fromEmail = process.env.RESEND_FROM_EMAIL || 'Anand <newsletter@anandmuraleedharan.com>';
       logs.push(`Sending email via Resend from ${fromEmail} to ${recipient.email}...`);
 
       const emailResponse = await resend.emails.send({
