@@ -7,4 +7,9 @@ recipients:
     email: "neethunarayanan08@gmail.com"
     role: "Tech Enthusiast & Daily Reader"
     active: true
+  - name: "Akhil Dev"
+    email: "akhildevvr@gmail.com"
+    role: "Tech Enthusiast & Daily Reader"
+    active: true
+
 
